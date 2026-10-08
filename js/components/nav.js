@@ -16,7 +16,10 @@ const Nav = (() => {
         <div class="nav-inner">
           <div class="nav-logo" onclick="Router.navigate('/')" role="button" tabindex="0" aria-label="Gabby Blogs home">
             <div class="nav-logo-icon">
-              <img src="https://res.cloudinary.com/sbja6tt8/image/upload/v1791463032/ChatGPT_Image_Oct_8_2026_01_32_02_PM.png" alt="Gabby Blogs logo" class="nav-logo-img" />
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="28" height="28" rx="7" fill="#16a34a"/>
+                <path d="M14.8 8C11.6 8 9 10.6 9 13.9c0 3.3 2.6 5.9 5.8 5.9 1.5 0 2.8-.5 3.8-1.4v-3h-4v1.6h2.2v.7c-.6.4-1.3.6-2 .6-2.3 0-4-1.8-4-4.3 0-2.4 1.7-4.3 4-4.3 1.1 0 2.1.4 2.8 1.1l1.1-1.2C17.8 8.6 16.4 8 14.8 8z" fill="white"/>
+              </svg>
             </div>
             <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.0625rem;letter-spacing:-0.03em;color:var(--color-text)">Gabby <span style="color:var(--color-accent)">Blogs</span></span>
           </div>
