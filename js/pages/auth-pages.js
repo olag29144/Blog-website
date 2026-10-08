@@ -4,14 +4,13 @@ const AuthPages = (() => {
     container.innerHTML = `
       <div class="auth-page" id="page-root-inner">
         <div class="auth-card">
-          <div class="auth-logo">
-            <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
-              <rect width="28" height="28" rx="7" fill="#16a34a"/>
-              <path d="M14.8 8C11.6 8 9 10.6 9 13.9c0 3.3 2.6 5.9 5.8 5.9 1.5 0 2.8-.5 3.8-1.4v-3h-4v1.6h2.2v.7c-.6.4-1.3.6-2 .6-2.3 0-4-1.8-4-4.3 0-2.4 1.7-4.3 4-4.3 1.1 0 2.1.4 2.8 1.1l1.1-1.2C17.8 8.6 16.4 8 14.8 8z" fill="white"/>
-            </svg>
-            <span style="font-weight:700;font-size:1.125rem;letter-spacing:-0.03em;color:var(--color-text)">Gabby <span style="color:#16a34a">Blogs</span></span>
+          <div class="auth-logo" onclick="Router.navigate('/')" role="button" tabindex="0" aria-label="Go to home">
+            <div class="auth-logo-icon">
+              <img src="https://res.cloudinary.com/sbja6tt8/image/upload/v1791463032/ChatGPT_Image_Oct_8_2026_01_32_02_PM.png" alt="Logo" class="auth-logo-img" />
+            </div>
           </div>
-          <p class="auth-subheading">Sign in to continue writing and reading.</p>
+          <h1 class="auth-heading" style="text-align:center">Sign in</h1>
+          <p class="auth-subheading" style="text-align:center">Sign in to continue writing and reading.</p>
           <form class="auth-form" id="login-form" novalidate>
             <div class="form-group">
               <label class="form-label" for="login-identifier">Email or username</label>
@@ -81,15 +80,13 @@ const AuthPages = (() => {
     container.innerHTML = `
       <div class="auth-page">
         <div class="auth-card" style="max-width:500px">
-          <div class="auth-logo">
-            <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
-              <rect width="28" height="28" rx="7" fill="#16a34a"/>
-              <path d="M14.8 8C11.6 8 9 10.6 9 13.9c0 3.3 2.6 5.9 5.8 5.9 1.5 0 2.8-.5 3.8-1.4v-3h-4v1.6h2.2v.7c-.6.4-1.3.6-2 .6-2.3 0-4-1.8-4-4.3 0-2.4 1.7-4.3 4-4.3 1.1 0 2.1.4 2.8 1.1l1.1-1.2C17.8 8.6 16.4 8 14.8 8z" fill="white"/>
-            </svg>
-            <span style="font-weight:700;font-size:1.125rem;letter-spacing:-0.03em;color:var(--color-text)">Gabby <span style="color:#16a34a">Blogs</span></span>
+          <div class="auth-logo" onclick="Router.navigate('/')" role="button" tabindex="0" aria-label="Go to home">
+            <div class="auth-logo-icon">
+              <img src="https://res.cloudinary.com/sbja6tt8/image/upload/v1791463032/ChatGPT_Image_Oct_8_2026_01_32_02_PM.png" alt="Logo" class="auth-logo-img" />
+            </div>
           </div>
-          <h1 class="auth-heading">Create your account</h1>
-          <p class="auth-subheading">Start writing and sharing your ideas with the world.</p>
+          <h1 class="auth-heading" style="text-align:center">Create your account</h1>
+          <p class="auth-subheading" style="text-align:center">Start writing and sharing your ideas with the world.</p>
           <form class="auth-form" id="register-form" novalidate>
             <div class="avatar-upload">
               <div class="avatar-upload-preview" id="avatar-upload-preview" role="button" tabindex="0" aria-label="Upload profile picture">
