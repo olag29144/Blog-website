@@ -673,14 +673,15 @@
 
 .post-card-image {
   width: 100%;
-  height: 160px;
-  object-fit: contain;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
   background: var(--color-bg-2);
 }
 
 .post-card-image-placeholder {
   width: 100%;
-  height: 160px;
+  height: 200px;
   background: linear-gradient(135deg, var(--color-bg-2) 0%, var(--color-bg-3) 100%);
   display: flex;
   align-items: center;
@@ -1602,9 +1603,9 @@
 
 .post-featured-image {
   width: 100%;
-  height: auto;
-  max-height: 380px;
-  object-fit: contain;
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-8);
   background: var(--color-bg-2);

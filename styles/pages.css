@@ -265,9 +265,9 @@
 
 .featured-post-image {
   width: 100%;
-  height: auto;
-  max-height: 320px;
-  object-fit: contain;
+  height: 340px;
+  object-fit: cover;
+  object-position: center;
   background: var(--color-bg-2);
   cursor: zoom-in;
 }
@@ -580,9 +580,9 @@
 
 .post-featured-image {
   width: 100%;
-  height: auto;
-  max-height: 380px;
-  object-fit: contain;
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-8);
   background: var(--color-bg-2);
