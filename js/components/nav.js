@@ -61,8 +61,10 @@ const Nav = (() => {
                 </button>
               </div>
             ` : `
-              <button class="btn btn-secondary btn-sm" onclick="Router.navigate('/login')" style="margin-right:4px">Sign in</button>
-              <button class="btn btn-primary btn-sm" onclick="Router.navigate('/register')">Get started</button>
+              <div class="nav-auth-btns">
+                <button class="btn btn-secondary btn-sm" onclick="Router.navigate('/login')">Sign in</button>
+                <button class="btn btn-primary btn-sm" onclick="Router.navigate('/register')">Get started</button>
+              </div>
             `}
 
             <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -111,8 +113,10 @@ const Nav = (() => {
           </a>
         ` : `
           <hr class="divider" style="margin:var(--space-2) 0">
-          <a class="nav-mobile-link" onclick="closeMobileMenu(); Router.navigate('/login')" role="menuitem" tabindex="0">Sign In</a>
-          <a class="nav-mobile-link" onclick="closeMobileMenu(); Router.navigate('/register')" role="menuitem" tabindex="0" style="color:var(--color-accent)">Get Started</a>
+          <div style="padding:var(--space-3) var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)">
+            <button class="btn btn-secondary w-full" style="height:44px;font-size:var(--text-base)" onclick="closeMobileMenu(); Router.navigate('/login')">Sign in</button>
+            <button class="btn btn-primary w-full" style="height:44px;font-size:var(--text-base)" onclick="closeMobileMenu(); Router.navigate('/register')">Get started</button>
+          </div>
         `}
         <div style="margin-top:var(--space-2);padding:var(--space-3) var(--space-4)">
           <button class="theme-toggle" data-theme-toggle onclick="Theme.toggle()" aria-label="Toggle theme" style="width:auto;display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-3);font-size:var(--text-sm)">

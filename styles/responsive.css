@@ -66,6 +66,10 @@
     display: none;
   }
 
+  .nav-auth-btns {
+    display: none;
+  }
+
   .nav-write-btn {
     width: 36px;
     height: 36px;
