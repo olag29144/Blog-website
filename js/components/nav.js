@@ -76,7 +76,20 @@ const Nav = (() => {
         </div>
       </nav>
 
-      <div class="nav-mobile-menu" id="nav-mobile-menu" role="menu">
+      <div id="nav-mobile-backdrop" class="nav-mobile-backdrop" onclick="closeMobileMenu()" aria-hidden="true"></div>
+      <div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-label="Navigation menu">
+        <div class="nav-mobile-menu-header">
+          <div class="nav-mobile-menu-logo">
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="28" height="28" rx="7" fill="#16a34a"/>
+              <path d="M14.8 8C11.6 8 9 10.6 9 13.9c0 3.3 2.6 5.9 5.8 5.9 1.5 0 2.8-.5 3.8-1.4v-3h-4v1.6h2.2v.7c-.6.4-1.3.6-2 .6-2.3 0-4-1.8-4-4.3 0-2.4 1.7-4.3 4-4.3 1.1 0 2.1.4 2.8 1.1l1.1-1.2C17.8 8.6 16.4 8 14.8 8z" fill="white"/>
+            </svg>
+            <span>Gabby <span style="color:var(--color-accent)">Blogs</span></span>
+          </div>
+          <button class="nav-mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
         <a class="nav-mobile-link ${path === '/' ? 'active' : ''}" onclick="closeMobileMenu(); Router.navigate('/')" role="menuitem" tabindex="0">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           Home
@@ -113,12 +126,12 @@ const Nav = (() => {
           </a>
         ` : `
           <hr class="divider" style="margin:var(--space-2) 0">
-          <div style="padding:var(--space-3) var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)">
+          <div style="display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-2) 0">
             <button class="btn btn-secondary w-full" style="height:44px;font-size:var(--text-base)" onclick="closeMobileMenu(); Router.navigate('/login')">Sign in</button>
             <button class="btn btn-primary w-full" style="height:44px;font-size:var(--text-base)" onclick="closeMobileMenu(); Router.navigate('/register')">Get started</button>
           </div>
         `}
-        <div style="margin-top:var(--space-2);padding:var(--space-3) var(--space-4)">
+        <div style="margin-top:auto;padding-top:var(--space-4);border-top:1px solid var(--color-border)">
           <button class="theme-toggle" data-theme-toggle onclick="Theme.toggle()" aria-label="Toggle theme" style="width:auto;display:flex;align-items:center;gap:var(--space-2);color:var(--color-text-3);font-size:var(--text-sm)">
             <span>Toggle theme</span>
           </button>
@@ -134,11 +147,12 @@ const Nav = (() => {
     if (toggleBtn) {
       toggleBtn.addEventListener('click', () => {
         const menu = document.getElementById('nav-mobile-menu');
+        const backdrop = document.getElementById('nav-mobile-backdrop');
         const isOpen = menu.classList.toggle('open');
+        if (backdrop) backdrop.classList.toggle('open', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
         toggleBtn.setAttribute('aria-expanded', isOpen);
-        toggleBtn.innerHTML = isOpen
-          ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
-          : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+        toggleBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
       });
     }
 
@@ -210,8 +224,11 @@ const Nav = (() => {
 
 function closeMobileMenu() {
   const menu = document.getElementById('nav-mobile-menu');
+  const backdrop = document.getElementById('nav-mobile-backdrop');
   const toggleBtn = document.getElementById('nav-mobile-toggle');
   if (menu) menu.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('open');
+  document.body.style.overflow = '';
   if (toggleBtn) {
     toggleBtn.setAttribute('aria-expanded', 'false');
     toggleBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
