@@ -266,7 +266,7 @@
 .featured-post-image {
   width: 100%;
   height: auto;
-  max-height: 480px;
+  max-height: 320px;
   object-fit: contain;
   background: var(--color-bg-2);
   cursor: zoom-in;
@@ -581,7 +581,7 @@
 .post-featured-image {
   width: 100%;
   height: auto;
-  max-height: none;
+  max-height: 380px;
   object-fit: contain;
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-8);

@@ -70,7 +70,7 @@
 
   .featured-post-image,
   .featured-post-image-placeholder {
-    height: 220px;
+    max-height: 200px;
   }
 
   .post-page {
