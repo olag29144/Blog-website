@@ -125,7 +125,7 @@ const SearchPage = (() => {
     return `
       <div class="post-card-h" onclick="Router.navigate('/post/${post.id}')" role="article" tabindex="0">
         ${post.coverImage
-          ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-card-h-image" loading="lazy" />`
+          ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-card-h-image" loading="lazy" referrerpolicy="no-referrer" />`
           : `<div class="post-card-h-image" style="display:flex;align-items:center;justify-content:center;background:var(--color-bg-3)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`
         }
         <div class="post-card-h-content">

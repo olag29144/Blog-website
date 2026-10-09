@@ -378,7 +378,31 @@ const DB = (() => {
   }
 
   function seedIfNeeded() {
-    if (read(KEYS.seeded)) return;
+    const defaultCovers = {
+      p1: '/src/assets/images/developer_writing_desk_1791545682109.jpg',
+      p2: '/src/assets/images/system_design_network_1791545694567.jpg',
+      p3: '/src/assets/images/empathy_product_design_1791545711660.jpg',
+      p4: '/src/assets/images/startup_office_night_1791545732687.jpg',
+      p5: '/src/assets/images/digital_accessibility_tech_1791545743013.jpg',
+      p6: '/src/assets/images/africa_tech_revolution_1791545754337.jpg',
+      p7: '/src/assets/images/javascript_code_stream_1791545764798.jpg',
+      p8: '/src/assets/images/product_leadership_focus_1791545777653.jpg'
+    };
+
+    if (read(KEYS.seeded)) {
+      const existingPosts = getPosts();
+      let updated = false;
+      existingPosts.forEach(p => {
+        if (!p.coverImage && defaultCovers[p.id]) {
+          p.coverImage = defaultCovers[p.id];
+          updated = true;
+        }
+      });
+      if (updated) {
+        savePosts(existingPosts);
+      }
+      return;
+    }
 
     const now = new Date();
     const daysAgo = (n) => new Date(now - n * 86400000).toISOString();
@@ -448,7 +472,7 @@ Anticipating questions means you write for the reader who doesn't have your cont
 Read more than you write. Identify writers whose work is clear and try to understand why it works. Then write something every day, even if it is just a detailed commit message.
 
 The engineers I have seen grow the fastest are not always the best coders. They are the ones who can make other people understand what they are building. That is the real leverage.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/developer_writing_desk_1791545682109.jpg',
         publishedAt: daysAgo(3), createdAt: daysAgo(4)
       },
       {
@@ -479,7 +503,7 @@ The real reason system design interviews persist is not because they are accurat
 We have built a system that optimizes for a certain type of preparation rather than a certain type of thinking. The best candidates game it. The best engineers sometimes fail it.
 
 That mismatch should bother us more than it does.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/system_design_network_1791545694567.jpg',
         publishedAt: daysAgo(7), createdAt: daysAgo(8)
       },
       {
@@ -510,7 +534,7 @@ It requires disagreeing with your data sometimes. Quantitative data tells you wh
 The products that have lasted — that have genuinely changed how people live — were built by teams that cared more about the person on the other end of the screen than the elegance of the system behind it.
 
 That should be the standard. Not NPS scores. Not activation rates. Whether a real person, with a real problem, was helped.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/empathy_product_design_1791545711660.jpg',
         publishedAt: daysAgo(5), createdAt: daysAgo(6)
       },
       {
@@ -545,7 +569,7 @@ We rebuilt around those eleven answers. Within four months, we had our first pro
 The money is not the milestone. The moment a customer tells someone else to use your product without being asked — that is the milestone. Everything before that is just survival.
 
 Stay close to the people who actually use what you are building. Get further from the people who are impressed by your funding announcement. The two groups want very different things from you.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/startup_office_night_1791545732687.jpg',
         publishedAt: daysAgo(10), createdAt: daysAgo(11)
       },
       {
@@ -582,7 +606,7 @@ Before any product ships, someone on the team should attempt to complete its pri
 Not to generate a report. To understand whether a person who does not experience the world the way most of your team does can actually use what you built.
 
 If they cannot, it is not finished.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/digital_accessibility_tech_1791545743013.jpg',
         publishedAt: daysAgo(2), createdAt: daysAgo(3)
       },
       {
@@ -611,7 +635,7 @@ This is producing something new: deep domain expertise combined with engineering
 Stop treating African technology as a charity narrative or a market opportunity to be captured from the outside. The builders are here. The problems are real and specific and understood. What is needed is more investment in infrastructure — power, connectivity, payment rails — and less condescension about what the ecosystem is capable of.
 
 The next decade will be interesting.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/africa_tech_revolution_1791545754337.jpg',
         publishedAt: daysAgo(14), createdAt: daysAgo(15)
       },
       {
@@ -642,7 +666,7 @@ Converting an array of objects to a lookup map by id? That is reduce. Summing a 
 Ask yourself: am I collecting a result from this array, or am I causing something to happen for each item? If you are collecting, reach for map, filter, or reduce. If you are causing effects, forEach is right.
 
 This distinction — pure transformation versus side effects — is one of the most useful mental models I know for writing readable, predictable code. It becomes second nature quickly. And once you have it, you will see its violation everywhere.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/javascript_code_stream_1791545764798.jpg',
         publishedAt: daysAgo(18), createdAt: daysAgo(19)
       },
       {
@@ -671,7 +695,7 @@ Sometimes this leads to yes — to building the thing, but smaller, or later. So
 Every time a product manager absorbs a bad request rather than pushing back, they earn a small amount of short-term goodwill and lose a larger amount of team trust. Engineers who have worked on features that went nowhere, that shipped to no one, that were deprioritized before they could be finished — they notice patterns.
 
 The best teams I have worked with trusted their product manager to protect them from wasted work. That trust is built one difficult conversation at a time.`,
-        coverImage: '',
+        coverImage: '/src/assets/images/product_leadership_focus_1791545777653.jpg',
         publishedAt: daysAgo(22), createdAt: daysAgo(23)
       }
     ];

@@ -1,0 +1,7 @@
+{
+  "name": "Gabby Blogs",
+  "description": "A modern blog platform for reading, writing, and sharing stories and ideas.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

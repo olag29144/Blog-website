@@ -88,7 +88,7 @@ const PostPage = (() => {
             </div>
           </div>
 
-          ${post.coverImage ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-featured-image img-zoomable" onclick="Lightbox.open('${post.coverImage}', '${Utils.escapeHtml(post.title)}')" />` : ''}
+          ${post.coverImage ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-featured-image img-zoomable" onclick="Lightbox.open('${post.coverImage}', '${Utils.escapeHtml(post.title)}')" referrerpolicy="no-referrer" />` : ''}
 
           <div class="article-content">${renderContent(post.content)}</div>
 
@@ -130,7 +130,7 @@ const PostPage = (() => {
               ${related.map(r => `
                 <div class="related-post-item" onclick="Router.navigate('/post/${r.id}')" role="article" tabindex="0">
                   ${r.coverImage
-                    ? `<img src="${r.coverImage}" alt="${Utils.escapeHtml(r.title)}" class="related-post-image" loading="lazy" />`
+                    ? `<img src="${r.coverImage}" alt="${Utils.escapeHtml(r.title)}" class="related-post-image" loading="lazy" referrerpolicy="no-referrer" />`
                     : `<div class="related-post-image" style="display:flex;align-items:center;justify-content:center;background:var(--color-bg-3)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`
                   }
                   <div>
