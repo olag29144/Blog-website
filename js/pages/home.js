@@ -59,7 +59,7 @@ const HomePage = (() => {
     return `
       <article class="featured-post" onclick="Router.navigate('/post/${post.id}')" role="article" aria-label="${Utils.escapeHtml(post.title)}">
         ${post.coverImage
-          ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="featured-post-image" loading="lazy" />`
+          ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="featured-post-image img-zoomable" onclick="event.stopPropagation(); Lightbox.open('${post.coverImage}', '${Utils.escapeHtml(post.title)}')" loading="lazy" />`
           : `<div class="featured-post-image-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`
         }
         <div class="featured-post-body">
@@ -106,7 +106,7 @@ const HomePage = (() => {
     return `
       <article class="post-card" onclick="Router.navigate('/post/${post.id}')" role="article" aria-label="${Utils.escapeHtml(post.title)}" tabindex="0">
         ${post.coverImage
-          ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-card-image" loading="lazy" />`
+          ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-card-image img-zoomable" onclick="event.stopPropagation(); Lightbox.open('${post.coverImage}', '${Utils.escapeHtml(post.title)}')" loading="lazy" />`
           : `<div class="post-card-image-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`
         }
         <div class="post-card-body">

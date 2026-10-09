@@ -194,3 +194,50 @@ const Utils = (() => {
     onOutsideClick, removeOutsideClick, categoryEmoji
   };
 })();
+
+const Lightbox = (() => {
+  function open(src, alt) {
+    const existing = document.getElementById('lightbox-root');
+    if (existing) existing.remove();
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'lightbox-backdrop';
+    backdrop.id = 'lightbox-root';
+    backdrop.setAttribute('role', 'dialog');
+    backdrop.setAttribute('aria-modal', 'true');
+    backdrop.setAttribute('aria-label', alt || 'Image preview');
+
+    backdrop.innerHTML = `
+      <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close image">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <img class="lightbox-img" src="${src}" alt="${alt || ''}" />
+    `;
+
+    document.body.appendChild(backdrop);
+    document.body.style.overflow = 'hidden';
+
+    const close = () => {
+      backdrop.style.opacity = '0';
+      backdrop.style.transition = 'opacity 150ms ease';
+      setTimeout(() => {
+        backdrop.remove();
+        document.body.style.overflow = '';
+      }, 150);
+    };
+
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) close();
+    });
+
+    backdrop.querySelector('#lightbox-close-btn').addEventListener('click', close);
+
+    document.addEventListener('keydown', function onKey(e) {
+      if (e.key === 'Escape') { close(); document.removeEventListener('keydown', onKey); }
+    });
+  }
+
+  return { open };
+})();

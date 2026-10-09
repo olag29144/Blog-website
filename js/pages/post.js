@@ -88,7 +88,7 @@ const PostPage = (() => {
             </div>
           </div>
 
-          ${post.coverImage ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-featured-image" />` : ''}
+          ${post.coverImage ? `<img src="${post.coverImage}" alt="${Utils.escapeHtml(post.title)}" class="post-featured-image img-zoomable" onclick="Lightbox.open('${post.coverImage}', '${Utils.escapeHtml(post.title)}')" />` : ''}
 
           <div class="article-content">${renderContent(post.content)}</div>
 
@@ -163,6 +163,12 @@ const PostPage = (() => {
     `;
 
     Comments.render(postId, document.getElementById('post-comments-root'));
+
+    document.querySelectorAll('.article-content img').forEach(img => {
+      img.classList.add('img-zoomable');
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => Lightbox.open(img.src, img.alt));
+    });
 
     return () => { document.title = 'Gabby Blogs'; };
   }
